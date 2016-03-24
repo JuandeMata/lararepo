@@ -52,17 +52,18 @@ class LararepoServiceProvider extends ServiceProvider
         $implementation = config( 'lararepo.implementation' );
         $skipRepositories = config( 'lararepo.skip' );
 
-        $allRepos = File::allFiles( $repositoriesBasePath );
+        $allRepos = \File::files( $repositoriesBasePath );
 
         foreach( $allRepos as $repo )
         {
-            $interface = $repo->getFilename();
+            $interface = basename( $repo );
             if ( in_array( $interface, $skipRepositories ) ) continue;
             else
             {
-                $commonName = str_replace( '.php', '', $interface );
+                $interfaceName = str_replace( '.php', '', $interface );
+                $commonName = str_replace( 'Interface', '', $interfaceName );
 
-                $interfaceFullClassName = $baseNamespace.$commonName;
+                $interfaceFullClassName = $baseNamespace.$interfaceName;
 
                 $implementationFullClassName = $baseNamespace.$implementation.'\\'.$commonName;
 
