@@ -354,6 +354,7 @@ We could even chain different criterias:
 ## Credits
 
 - [Jesús Espejo](https://github.com/jespejoh) ([Twitter](https://twitter.com/jespejo89))
+- This great article by Bosnadev was source of Inspiration for almost everything included in this package: https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/
 
 
 ## Bugs & contributing
