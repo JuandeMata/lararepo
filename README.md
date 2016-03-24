@@ -10,10 +10,11 @@ on our database tables, like create, update, filter or delete.
 
 However, using repositories is not always a good idea, specially with Laravel and its ORM, Eloquent, as it -sometimes-
 forces you to give up some great features in favor of *better architecture* (it depends). For some projects this may be
-an overkill and therefore is up to the developer to see if you really need this level of complexity or not.
+an overkill and therefore is up to the developer to see if this level of complexity is needed or not.
 
 This package aims to provide a boilerplate when implementing the Repository pattern on Laravel's Eloquent ORM. The way
-it provides it it's using a `RepositoryInterface` and a basic `Repository` implementation that is able to work with Eloquent models.  
+it provides it it's using a `RepositoryInterface` and a basic `Repository` implementation that is able to work with Eloquent models,
+ providing basic methods that will cover 85% if the Database operations that you will probably do in your application.
 
 ## Installation
 
@@ -41,7 +42,7 @@ the "app" folder: app/MyWebApp/Repositories.
 
 At the root of this folder we'll have all our interfaces following the next name convention: `[RepositoryName]Interface.php`
 
-**NOTE**: It does not really matter the name that we use as long as we use "Interface" as prefix. This is important because the 
+**NOTE**: It does not really matter the name that we use as long as we use "Interface" as suffix. This is important because the 
 auto binder will try to find all files matching this pattern.
 
 Inside this Repositories folder, we must have another folder called Eloquent, that will contain all our implementations for
@@ -102,6 +103,19 @@ class UsersRepositoryInterface extends EloquentRepository implements UsersReposi
 
 ```
 
+Now we need to configure the `config/lararepo.php` file to match our paths and namespace:  
+
+```php
+
+    'path' => app_path('MyApp/Repositories'),
+    
+    'namespace' => 'MyApp\Repositories',
+
+    'implementation' => 'Eloquent',
+
+```
+
+
 Now the repository is ready to be used and injected in other services or controllers:
 
 ```php
@@ -124,6 +138,9 @@ class UsersService implements UsersServicesInterface  {
 }
 
 ```
+
+**NOTE**: This example assumes that you have configured your `composer.json` to autoload the files on app/MyApp with the MyApp
+namespace.
 
 ## Methods shipped by default.
 
