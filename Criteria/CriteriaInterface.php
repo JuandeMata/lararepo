@@ -1,0 +1,18 @@
+<?php
+
+namespace Jespejoh\LaraRepo\Criteria;
+
+/**
+ * Interface CriteriaInterface
+ * @package Jespejoh\LaraRepo\Criteria
+ */
+interface CriteriaInterface
+{
+    /**
+     * The criteria to be applied must go inside this method.
+     *
+     * @param mixed $queryBuilder Current query builder.
+     * @return mixed $queryBuilder Current instance of the query builder with the criteria appplied.
+     */
+    public function apply( $queryBuilder );
+}
