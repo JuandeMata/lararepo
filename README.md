@@ -354,7 +354,7 @@ We could even chain different criterias:
 ```php
 
     $registeredViaFacebookCriteria = new RegisteredVia( 'facebook' );
-    $orderByCreationDate = new OrderBy( 'created_at', 'ASC );
+    $orderByCreationDate = new OrderBy( 'created_at', 'ASC' );
     
     return $this->usersRepository
                 ->addCriteria( $registeredViaFacebookCriteria )
