@@ -43,11 +43,10 @@ return [
     | your repositories under "app/Repositories", and the implementation is
     | 'Eloquent', the system will automatically try to bind every file
     | located in 'app/Repositories/MyCustomRepositoryInterface.php' to a file
-    | located at 'app/Repositories/Eloquent/MyCustomRepository.php'. The namespace
+    | located in 'app/Repositories/Eloquent/MyCustomRepository.php'. The namespace
     | of the implementation must also be preceded by this value. In the previous
     | example, the namespace of our repository would be: "App\Repositories\Eloquent".
-    | Be with capital letter, and name this configuration value exactly the same
-    | way that your folder.
+    | Name this configuration value exactly the same way that your folder.
     |
     | Values supported: Eloquent.
     |

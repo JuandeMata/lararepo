@@ -6,8 +6,6 @@ use Jespejoh\LaraRepo\Criteria\CriteriaInterface;
 use Jespejoh\LaraRepo\RepositoryInterface;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
-
 
 /**
  * Class EloquentRepository
@@ -24,15 +22,14 @@ abstract class EloquentRepository implements RepositoryInterface
 
     /**
      * @param Model $model
-     * @param Collection $collection
      */
-    public function __construct( Model $model, Collection $collection )
+    public function __construct( Model $model )
     {
         $this->model = $model;
         // A clean copy of the model is needed when the scope needs to be reset.
         $this->cleanModel = $model;
         $this->skipCriteria = FALSE;
-        $this->criteria = $collection;
+        $this->criteria = [];
     }
 
     /**
@@ -104,7 +101,7 @@ abstract class EloquentRepository implements RepositoryInterface
      */
     public function addCriteria( CriteriaInterface $criteria)
     {
-        $this->criteria->push($criteria);
+        $this->criteria[]  = $criteria;
         return $this;
     }
 
@@ -189,7 +186,7 @@ abstract class EloquentRepository implements RepositoryInterface
      */
     public function resetScope()
     {
-        $this->criteria = $this->criteria->make();
+        $this->criteria = [];
         $this->skipCriteria( FALSE );
         $this->model = $this->cleanModel;
         return $this;
