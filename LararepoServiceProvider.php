@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
  * Class LaraRepoServiceProvider
  * @package Jespejoh\LaraRepo
  */
-class LaraRepoServiceProvider extends ServiceProvider
+class LararepoServiceProvider extends ServiceProvider
 {
 
     private $configPath = '/config/lararepo.php';
