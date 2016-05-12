@@ -148,4 +148,9 @@ interface RepositoryInterface
      */
     public function delete( $value, $field = 'id' );
 
+    /**
+     * @return int number of records matching the criteria (or total amount of records).
+     */
+    public function count();
+
 }

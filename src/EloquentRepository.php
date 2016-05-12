@@ -231,6 +231,17 @@ abstract class EloquentRepository implements RepositoryInterface
         return $this->model->where( $field, $value )->delete();
     }
 
+    /**
+     * @return mixed
+     */
+    public function count()
+    {
+        $this->applyCriteria();
+        return $this->model->count();
+    }
+
+
+
 
     /*******************************************************************************************************************
      *******************************************************************************************************************
