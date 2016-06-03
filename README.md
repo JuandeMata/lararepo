@@ -285,6 +285,16 @@ The repository package offers a series of methods by default. These are:
      * @return boolean TRUE It will always return TRUE.
      */
     public function delete( $value, $field = 'id' );
+
+    /**
+     * Restores from soft-delet as many entities as the filter matches.
+     *
+     * @param $value
+     * @param $value mixed Value used for the filter.
+     * @param string $field Field on the database that you will filter by. Default: id.
+     * @return boolean TRUE It will always return TRUE.
+     */
+    public function restore( $value, $field = 'id' );
     
     /**
      * @return int number of records matching the criteria (or total amount of records).

@@ -232,6 +232,16 @@ abstract class EloquentRepository implements RepositoryInterface
     }
 
     /**
+     * @param $value
+     * @param string $field
+     * @return mixed
+     */
+    public function restore( $value, $field = 'id' )
+    {
+        return $this->model->where( $field, $value )->restore();
+    }
+
+    /**
      * @return mixed
      */
     public function count()
